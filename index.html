@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Valentine's Day ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            overflow-x: hidden;
+            color: white;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 50px;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        img {
+            width: 260px;
+            margin-top: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px white;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        #yesBtn {
+            background-color: red;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: white;
+            color: red;
+            position: absolute;
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -10px;
+            font-size: 20px;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-800px); opacity: 0; }
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Happy Valentine's Day ❤️</h1>
+<h2>Madhi ❤️ Mahi</h2>
+<p>Mahi, Will You Be My Valentine? 💍💖</p>
+
+<!-- Your Photo -->
+<img src="photo.jpeg" width="250" style="border-radius:20px;">
+
+
+<div class="buttons">
+    <button id="yesBtn" onclick="celebrate()">Yes 💖</button>
+    <button id="noBtn" onmouseover="moveNo()">No 😜</button>
+</div>
+
+<br>
+<button onclick="playMusic()">🎵 Play Romantic Music</button>
+
+<audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+
+<canvas id="fireworks"></canvas>
+
+<script>
+function moveNo() {
+    var button = document.getElementById("noBtn");
+    var x = Math.random() * (window.innerWidth - 100);
+    var y = Math.random() * (window.innerHeight - 50);
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+function celebrate() {
+    alert("Yayyyy Mahi ❤️ I Love You Forever 🥰💖");
+    launchFireworks();
+}
+
+function playMusic() {
+    document.getElementById("bgMusic").play();
+}
+
+function createHeart() {
+    var heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
+
+/* Fireworks */
+var canvas = document.getElementById("fireworks");
+var ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function launchFireworks() {
+    for (let i = 0; i < 150; i++) {
+        setTimeout(() => {
+            ctx.fillStyle = "hsl(" + Math.random()*360 + ",100%,50%)";
+            ctx.beginPath();
+            ctx.arc(Math.random()*canvas.width,
+                    Math.random()*canvas.height,
+                    5, 0, Math.PI*2);
+            ctx.fill();
+        }, i * 15);
+    }
+}
+</script>
+
+</body>
+</html>
