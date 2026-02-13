@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Our Forever Love 💖</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    background:radial-gradient(circle,#000000,#330033);
+    font-family:Arial, sans-serif;
+    text-align:center;
+    color:white;
+    overflow:hidden;
+}
+
+/* Main Content */
+.container{
+    position:relative;
+    z-index:2;
+    margin-top:12%;
+}
+
+h1{
+    font-size:50px;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px #fff; }
+    to{ text-shadow:0 0 40px #ff00cc; }
+}
+
+.heart{
+    font-size:120px;
+    animation:beat 1s infinite;
+}
+
+@keyframes beat{
+    0%{ transform:scale(1);}
+    50%{ transform:scale(1.3);}
+    100%{ transform:scale(1);}
+}
+
+p{
+    font-size:24px;
+    margin:20px;
+}
+
+/* Button */
+button{
+    padding:12px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#ff00cc;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#ff00cc;
+    color:white;
+    transform:scale(1.1);
+}
+
+/* Rose petals */
+.petal{
+    position:absolute;
+    color:#ff4da6;
+    font-size:20px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    0%{ transform:translateY(-10vh); opacity:1;}
+    100%{ transform:translateY(100vh); opacity:0;}
+}
+
+/* Popup */
+.popup{
+    position:fixed;
+    top:40%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    color:#ff00cc;
+    padding:30px;
+    border-radius:20px;
+    display:none;
+    font-size:26px;
+    box-shadow:0 0 30px #ff00cc;
+    z-index:3;
+}
+
+/* Fireworks canvas */
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio autoplay loop>
+<source src="https://"C:\Users\HP\OneDrive\画像\Camera Roll\WhatsApp Audio 2026-02-13 at 14.47.10.mpeg" type="audio/mp3">
+</audio>
+
+<canvas id="fireworks"></canvas>
+
+<div class="container">
+<h1>Happy Valentine's Day 💖</h1>
+<div class="heart">❤️</div>
+
+<p>
+Distance means nothing 🌍<br>
+When someone means everything 💞<br><br>
+madhi ❤️ Mahi<br>
+Forever & Always 💍✨
+</p>
+
+<button onclick="showLove()">Click My Heart 💘</button>
+</div>
+
+<div class="popup" id="lovePopup">
+I Love You More choww 💖😍
+</div>
+
+<script>
+// Rose petals
+function createPetal(){
+    const petal=document.createElement("div");
+    petal.classList.add("petal");
+    petal.innerHTML="🌹";
+    petal.style.left=Math.random()*100+"vw";
+    petal.style.animationDuration=Math.random()*3+3+"s";
+    document.body.appendChild(petal);
+    setTimeout(()=>{petal.remove();},6000);
+}
+setInterval(createPetal,300);
+
+// Popup
+function showLove(){
+    document.getElementById("lovePopup").style.display="block";
+}
+
+// Simple Fireworks
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+function firework(){
+    const x=Math.random()*canvas.width;
+    const y=Math.random()*canvas.height/2;
+    for(let i=0;i<50;i++){
+        ctx.beginPath();
+        ctx.arc(x+(Math.random()-0.5)*100,y+(Math.random()-0.5)*100,2,0,2*Math.PI);
+        ctx.fillStyle="hsl("+Math.random()*360+",100%,50%)";
+        ctx.fill();
+    }
+}
+setInterval(()=>{
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    firework();
+},800);
+</script>
+
+</body>
+</html>
