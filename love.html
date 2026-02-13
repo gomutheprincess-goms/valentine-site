@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mahi ❤️ Madhi</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+        }
+
+        .page {
+            display: none;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .active {
+            display: flex;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin-top: 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        #heartBtn {
+            font-size: 80px;
+            background: none;
+            border: none;
+        }
+
+        #heartBtn:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1 -->
+    <div class="page active" id="page1">
+        <h1>Mahi ❤️ Madhi</h1>
+        <p>Our Love Story Begins 💕</p>
+        <button onclick="nextPage(2)">Start 💖</button>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page" id="page2">
+        <h1>Madhi is Special to Mahi ✨</h1>
+        <button onclick="nextPage(3)">Next 💕</button>
+    </div>
+
+    <!-- PAGE 3 -->
+    <div class="page" id="page3">
+        <h1>Mahi Misses Madhi 🌊</h1>
+        <p>Distance can never break true love ❤️</p>
+        <button onclick="nextPage(4)">Next 💖</button>
+    </div>
+
+    <!-- PAGE 4 -->
+    <div class="page" id="page4">
+        <h1>Madhi ❤️ Click the Heart ❤️</h1>
+
+        <button id="heartBtn">❤️</button>
+
+        <audio id="loveAudio">
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+
+        <button onclick="nextPage(5)">Next Level 💞</button>
+    </div>
+
+    <!-- PAGE 5 -->
+    <div class="page" id="page5">
+        <h1>Forever Mahi 💙 Madhi 💖</h1>
+        <p>Across the sea, our hearts beat as one 💕</p>
+    </div>
+
+<script>
+    function nextPage(pageNumber) {
+        document.querySelectorAll(".page").forEach(page => {
+            page.classList.remove("active");
+        });
+
+        document.getElementById("page" + pageNumber).classList.add("active");
+    }
+
+    const heart = document.getElementById("heartBtn");
+    const audio = document.getElementById("loveAudio");
+
+    heart.addEventListener("click", function () {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    });
+</script>
+
+</body>
+</html>
